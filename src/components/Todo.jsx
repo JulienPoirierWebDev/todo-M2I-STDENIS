@@ -1,24 +1,27 @@
-function Todo() {
-	const detail = {
-		text: 'Youhou',
-		checked: true,
-		priority: 'Critique',
-		theme: 'Maison',
-        sousTaches : [{ checked :false , text : "sous tache"},
-                      {checked :false , text : "sous tache"},
-                      checked :false , text : "sous tache"
+/* eslint-disable react/prop-types */
+//Que fait ce composant
 
+import transformInKebabCase from '../utils/transformInKebabCase';
 
-        ]
-	};
+//affiche la tache et si elle est checked
+function Todo({ todo, handleChecked }) {
+	if (!todo) {
+		return null;
+	}
 
 	return (
-		<>
-			<div>
-				<p>Todo</p>
-				<div>{detail.text}</div>
-			</div>
-		</>
+		<div className={'todo ' + todo.priority.toLowerCase()}>
+			<input
+				type='checkbox'
+				checked={todo.checked}
+				onChange={() => {
+					handleChecked(todo);
+				}}
+				name={transformInKebabCase(todo.text)}
+				id={transformInKebabCase(todo.text)}
+			/>
+			<label htmlFor={transformInKebabCase(todo.text)}>{todo.text}</label>
+		</div>
 	);
 }
 
