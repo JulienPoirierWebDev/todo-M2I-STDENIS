@@ -1,3 +1,12 @@
+:root {
+	--color-critique: red;
+	--color-haute: orange;
+	--color-moyen: yellow;
+	--color-faible: green;
+	--color-colapse: lightblue;
+	--color-todo: black;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -5,14 +14,53 @@
 }
 
 .todo {
-	border: 2px solid black;
+	border: 2px solid var(--color-todo);
 	margin: 10px;
 }
 
+.faible {
+	border: 2px solid var(--color-faible);
+}
+
+.haute {
+	border: 2px solid var(--color-haute);
+}
+
 .moyenne {
-	border: 2px solid blue;
+	border: 2px solid var(--color-moyen);
 }
 
 .critique {
-	border: 2px solid red;
+	border: 2px solid var(--color-critique);
+}
+
+.arrow {
+	transition: all 1s ease-in-out;
+	width: 50px;
+	aspect-ratio: 1/1;
+}
+
+.arrow-open {
+	transform: rotate(540deg);
+}
+
+.arrow-close {
+	transform: rotate(0deg);
+}
+
+.collapse {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	background-color: var(--color-colapse);
+	padding: 10px;
+	margin-inline: 10px;
+	cursor: pointer;
+}
+
+.todo input:checked + label {
+	text-decoration: line-through;
+}
+
+.todolist {
 }

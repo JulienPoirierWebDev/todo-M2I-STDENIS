@@ -4,12 +4,12 @@
 import transformInKebabCase from '../utils/transformInKebabCase';
 
 //affiche la tache et si elle est checked
-function Todo({ todo, handleChecked }) {
+function Todo({ todo, handleChecked, handleDelete }) {
 	if (!todo) {
 		return null;
 	}
 
-	return (
+ 	return (
 		<div className={'todo ' + todo.priority.toLowerCase()}>
 			<input
 				type='checkbox'
@@ -21,6 +21,13 @@ function Todo({ todo, handleChecked }) {
 				id={transformInKebabCase(todo.text)}
 			/>
 			<label htmlFor={transformInKebabCase(todo.text)}>{todo.text}</label>
+			<button
+				onClick={() => {
+					handleDelete(todo);
+				}}
+			>
+				Supprimer
+			</button>
 		</div>
 	);
 }
